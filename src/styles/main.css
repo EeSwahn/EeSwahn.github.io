@@ -123,6 +123,7 @@ input[type=range]::-webkit-slider-runnable-track {
   flex-direction: column;
   cursor: pointer;
   transition: opacity 0.8s ease;
+  pointer-events: auto;
 }
 
 #start-screen.fade-out {
@@ -150,6 +151,11 @@ p.subtitle {
 }
 
 @keyframes glow {
-  from { text-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
-  to { text-shadow: 0 0 20px rgba(0, 242, 255, 0.6); }
+  from {
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+  }
+
+  to {
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+  }
 }
