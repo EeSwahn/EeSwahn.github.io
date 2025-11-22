@@ -11,6 +11,9 @@ class App {
     this.uiManager = new UIManager(
       () => this.start()
     );
+
+    // Initialize UI
+    this.uiManager.init();
   }
 
   async start() {
