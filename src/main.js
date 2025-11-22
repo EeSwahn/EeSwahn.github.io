@@ -21,11 +21,12 @@ class App {
   async start() {
     await this.audioController.init();
 
-    // Play intro animation first
+    // Play intro animation and start music immediately
+    this.audioController.play();
     this.particleSystem.playIntro("很高兴在网易云音乐遇见你", () => {
-      // Start audio and main loop after intro
-      this.audioController.play();
-      this.loop();
+      // Animation complete, but don't start main loop
+      // Just clear the intro state
+      this.particleSystem.isIntro = false;
     });
   }
 

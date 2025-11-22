@@ -138,6 +138,9 @@ export class ParticleSystem {
             if (activeCount === 0) {
                 this.isIntro = false;
                 this.introParticles = [];
+                // Clear the canvas and stop all animations
+                this.ctx.fillStyle = 'rgba(5, 5, 5, 1)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
                 if (onComplete) onComplete();
             } else {
                 requestAnimationFrame(animateIntro);
@@ -149,6 +152,11 @@ export class ParticleSystem {
 
     spawn(count, intensity) {
         if (this.isIntro) return; // Don't spawn music particles during intro
+
+        // After intro is complete, don't spawn any particles
+        if (!this.isIntro && this.introParticles.length === 0) {
+            return;
+        }
 
         const centerY = this.canvas.height / 2;
 
@@ -175,6 +183,11 @@ export class ParticleSystem {
 
     update() {
         if (this.isIntro) return; // Intro handled by separate loop
+
+        // After intro is complete, don't run any animations
+        if (!this.isIntro && this.introParticles.length === 0 && this.particles.length === 0) {
+            return;
+        }
 
         // Clear with trail effect
         this.ctx.fillStyle = 'rgba(5, 5, 5, 0.2)';
