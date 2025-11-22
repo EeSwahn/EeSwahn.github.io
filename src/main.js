@@ -7,15 +7,10 @@ class App {
   constructor() {
     this.audioController = new AudioController();
     this.particleSystem = new ParticleSystem(document.getElementById('visualizer-canvas'));
-    this.threshold = 180;
 
     this.uiManager = new UIManager(
-      () => this.start(),
-      (val) => this.threshold = val,
-      (val) => this.particleSystem.setSpeedMultiplier(val / 10) // Normalize 1-50 to 0.1-5.0
+      () => this.start()
     );
-
-    this.loop = this.loop.bind(this);
   }
 
   async start() {

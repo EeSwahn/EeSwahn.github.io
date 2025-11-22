@@ -5,7 +5,7 @@ export class AudioController {
         this.source = null;
         this.dataArray = null;
         this.isPlaying = false;
-        this.audioElement = new Audio('./G.E.M.邓紫棋 - 泡沫.mp3');
+        this.audioElement = new Audio('/G.E.M.邓紫棋 - 泡沫.mp3');
         this.audioElement.loop = true;
     }
 
